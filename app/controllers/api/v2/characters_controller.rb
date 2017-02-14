@@ -1,4 +1,4 @@
-class CharactersController < ApplicationController
+class Api::V2::CharactersController < ApplicationController
   def index
     @characters = Character.all
     render "index.json.jbuilder"
@@ -29,8 +29,8 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    @character = Character.find_by(id: params[:id])
-    @character.delete
+    character = Character.find_by(id: params[:id])
+    character.delete
     render "index.json.jbuilder"
   end
 end
